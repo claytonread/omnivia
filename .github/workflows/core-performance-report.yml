@@ -1,0 +1,66 @@
+name: Core Performance Report
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "benchmarks/**"
+      - "scripts/check-core-performance.sh"
+      - "scripts/run-core-benchmarks.sh"
+      - "services/omnivia-memory/**"
+      - ".github/workflows/core-performance-report.yml"
+
+jobs:
+  performance-report:
+    name: Tiny benchmark report
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Core test dependencies
+        run: |
+          python3 -m pip install -e "services/omnivia-memory[dev]"
+
+      - name: Run benchmark tests
+        run: |
+          PYTHONPATH=services/omnivia-memory/src python3 -m pytest benchmarks/tests -q
+
+      - name: Run informational performance check
+        id: performance
+        continue-on-error: true
+        env:
+          OMNIVIA_BENCHMARK_PROFILE: tiny
+          OMNIVIA_BENCHMARK_REPORT_DIR: performance-reports
+        run: |
+          scripts/check-core-performance.sh
+
+      - name: Upload performance reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: core-performance-reports
+          path: performance-reports/
+          if-no-files-found: warn
+
+      - name: Summarize performance result
+        if: always()
+        run: |
+          {
+            echo "## Core Performance Report"
+            echo
+            echo "This workflow is informational only. Benchmark comparison failures do not block merges."
+            echo
+            echo "- Profile: \`tiny\`"
+            echo "- Reports artifact: \`core-performance-reports\`"
+            echo "- Performance check outcome: \`${{ steps.performance.outcome }}\`"
+            echo "- Gate policy: see \`benchmarks/baselines/GOVERNANCE.md\`"
+          } >> "$GITHUB_STEP_SUMMARY"

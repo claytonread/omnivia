@@ -241,6 +241,25 @@ Baseline promotion and CI gate rules are defined in
 reference environment and variance policy are defined, local check failures
 should trigger review rather than automatic baseline replacement.
 
+## Informational CI Report
+
+The repository includes a non-blocking GitHub Actions workflow:
+
+```text
+.github/workflows/core-performance-report.yml
+```
+
+It runs on manual dispatch and on pull requests that touch Core benchmark,
+benchmark helper, or memory-service paths. The workflow runs benchmark tests,
+executes `scripts/check-core-performance.sh` for the `tiny` profile, uploads
+generated reports as the `core-performance-reports` artifact, and writes a
+short job summary.
+
+The performance comparison step uses `continue-on-error`, so regression results
+are visible without blocking merges. Do not convert this workflow into a hard
+gate until the baseline governance policy defines the reference runner, repeat
+count, variance tolerance, and promotion rules for CI.
+
 ## Testing
 
 Run the test suite:

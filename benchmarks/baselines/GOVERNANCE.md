@@ -112,3 +112,8 @@ Recommended first gate:
 - command: `scripts/check-core-performance.sh`
 - output: uploaded report artifacts
 - failure behavior: do not block merges until variance is measured
+
+The current informational workflow is
+`.github/workflows/core-performance-report.yml`. It may upload benchmark and
+comparison artifacts, but it must remain non-blocking until the hard-gate
+readiness conditions above are satisfied.
