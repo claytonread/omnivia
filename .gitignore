@@ -1,0 +1,56 @@
+# Dependencies
+node_modules/
+.venv/
+venv/
+
+# Build outputs
+dist/
+build/
+*.egg-info/
+
+# Python caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+*.secret
+*secret*
+*.pem
+*.key
+
+# Local data
+data/*
+!data/.gitignore
+*.sqlite
+*.sqlite3
+
+# OS/editor artifacts
+.DS_Store
+*.swp
+*.swo
+
+# Private operating/planning material belongs in omnivia-pm
+.claude/
+bootstrap/
+context/
+ops/
+prompts/
+product/
+features/
+specs/
+
+# External reference material stays local unless explicitly promoted
+external/reference/*
+!external/reference/.gitkeep
+external/vendor/*
+!external/vendor/.gitkeep
+external/sidecars/*
+!external/sidecars/.gitkeep
