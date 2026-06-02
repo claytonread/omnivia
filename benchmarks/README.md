@@ -236,6 +236,11 @@ scripts/check-core-performance.sh
 Generated files in `benchmarks/reports` are temporary working evidence. Keep
 baselines in `benchmarks/baselines` when a result is intentionally promoted.
 
+Baseline promotion and CI gate rules are defined in
+[`benchmarks/baselines/GOVERNANCE.md`](baselines/GOVERNANCE.md). Until a
+reference environment and variance policy are defined, local check failures
+should trigger review rather than automatic baseline replacement.
+
 ## Testing
 
 Run the test suite:

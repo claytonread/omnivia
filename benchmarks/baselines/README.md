@@ -2,6 +2,9 @@
 
 This directory stores baseline benchmark results for performance regression tracking.
 
+Baseline capture, variance, promotion, and CI gate rules are defined in
+[`GOVERNANCE.md`](GOVERNANCE.md).
+
 ## Purpose
 
 Baseline files enable the benchmark comparison tool (`benchmark_compare`) to detect performance regressions by comparing new runs against established performance characteristics.
@@ -113,3 +116,5 @@ new baseline so regressions are visible before baseline churn.
 2. **Update baselines when intentionally optimizing** to avoid false failures
 3. **Keep baseline environment info** in version control for reproducibility
 4. **Use versioned baselines** when significant API changes occur
+5. **Do not replace baselines after a single failing local run**; follow the
+   governance checklist first.
