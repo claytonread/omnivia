@@ -4,7 +4,7 @@ import json
 
 from benchmarks.dataset import PROFILE_SIZES, get_item_count
 from benchmarks.report import export_csv, export_json, export_markdown, generate_summary
-from benchmarks.runner.benchmark_runner import run_benchmarks
+from benchmarks.runner.benchmark_runner import export_results, run_benchmarks
 from benchmarks.schema import BenchmarkRun, EnvironmentInfo, ScenarioResult
 from benchmarks.thresholds import ThresholdConfig, compare_runs
 
@@ -73,6 +73,15 @@ def test_exports_use_shared_schema() -> None:
     assert "p95" in markdown.lower()
     assert "throughput_ops_per_second" in csv
     assert summary["total_duration_ms"] == 0
+
+
+def test_export_results_all_writes_every_format(tmp_path) -> None:
+    run = BenchmarkRun(profile="tiny")
+    run.add_scenario_result(scenario_result())
+
+    exported = export_results(run, tmp_path, ["all"])
+
+    assert {path.suffix for path in exported} == {".csv", ".json", ".md"}
 
 
 def test_threshold_compare_checks_multiple_metrics() -> None:

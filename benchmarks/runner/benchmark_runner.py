@@ -373,7 +373,7 @@ def main(args: list[str] | None = None) -> int:
 
     # Export results
     if not parsed.no_export:
-        formats = ["json"] if parsed.format == "all" else [parsed.format]
+        formats = ["all"] if parsed.format == "all" else [parsed.format]
         exported = export_results(run, parsed.output_dir, formats)
 
         if not parsed.quiet:
