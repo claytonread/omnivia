@@ -4,6 +4,7 @@ import json
 
 from benchmarks.dataset import PROFILE_SIZES, get_item_count
 from benchmarks.report import export_csv, export_json, export_markdown, generate_summary
+from benchmarks.runner.benchmark_compare import main as compare_main
 from benchmarks.runner.benchmark_runner import export_results, run_benchmarks
 from benchmarks.schema import BenchmarkRun, EnvironmentInfo, ScenarioResult
 from benchmarks.thresholds import ThresholdConfig, compare_runs
@@ -99,6 +100,30 @@ def test_threshold_compare_checks_multiple_metrics() -> None:
         if item.metric == "throughput_ops_per_second"
     ][0]
     assert throughput.status == "fail"
+
+
+def test_compare_cli_returns_distinct_regression_exit_code(tmp_path) -> None:
+    baseline = BenchmarkRun(profile="tiny")
+    latest = BenchmarkRun(profile="tiny")
+    baseline.add_scenario_result(scenario_result(throughput=100.0))
+    latest.add_scenario_result(scenario_result(throughput=70.0))
+
+    baseline_path = tmp_path / "baseline_tiny_test.json"
+    latest_path = tmp_path / "benchmark_tiny_test.json"
+    baseline_path.write_text(export_json(baseline))
+    latest_path.write_text(export_json(latest))
+
+    exit_code = compare_main([
+        "--baseline",
+        str(baseline_path),
+        "--latest",
+        str(latest_path),
+        "--format",
+        "json",
+        "--quiet",
+    ])
+
+    assert exit_code == 2
 
 
 def test_profile_sizes() -> None:

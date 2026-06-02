@@ -205,6 +205,37 @@ python -m benchmarks.runner.benchmark_compare \
     --fail-threshold 30
 ```
 
+## Local Regression Check
+
+Use the helper script for the standard local Core performance check:
+
+```bash
+scripts/check-core-performance.sh
+```
+
+By default it:
+
+- runs the `tiny` benchmark profile
+- writes a transient JSON report under `benchmarks/reports`
+- compares that report against the latest `tiny` baseline under `benchmarks/baselines`
+- writes comparison JSON and Markdown under `benchmarks/reports`
+- exits `2` when the fail threshold is exceeded
+
+Warnings use the default comparison behavior: they are reported but do not fail
+the command unless `OMNIVIA_BENCHMARK_FAIL_ON_WARNING=1` is set.
+
+Configuration:
+
+```bash
+OMNIVIA_BENCHMARK_PROFILE=tiny \
+OMNIVIA_BENCHMARK_WARNING_THRESHOLD=10 \
+OMNIVIA_BENCHMARK_FAIL_THRESHOLD=25 \
+scripts/check-core-performance.sh
+```
+
+Generated files in `benchmarks/reports` are temporary working evidence. Keep
+baselines in `benchmarks/baselines` when a result is intentionally promoted.
+
 ## Testing
 
 Run the test suite:

@@ -97,6 +97,16 @@ if [ $? -eq 2 ]; then
 fi
 ```
 
+For local preflight checks, prefer the repository helper:
+
+```bash
+scripts/check-core-performance.sh
+```
+
+The helper runs the tiny profile, compares against the latest tiny baseline,
+and keeps generated reports in `benchmarks/reports`. Use it before promoting a
+new baseline so regressions are visible before baseline churn.
+
 ## Best Practices
 
 1. **Establish baselines on reference hardware** for meaningful comparisons
