@@ -37,7 +37,7 @@ Do not add the following to this repository:
 ## Related Private Repositories
 
 - `omnivia-platform`: private base app and commercial platform.
-- `omnivia-dev-pack`: private optional downloadable Dev module.
+- `omnivia-dev`: private optional downloadable Dev module.
 - `omnivia-cloud`: private future cloud placeholder.
 - `omnivia-pm`: private planning, operating, ADR, roadmap, task, prompt, and governance repository.
 

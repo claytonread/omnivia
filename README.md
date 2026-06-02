@@ -43,7 +43,7 @@ OmniVia uses a split repository model:
 |---|---|---|
 | `omnivia-core` | Public | Core primitives and public documentation. |
 | `omnivia-platform` | Private | Base app, runtime, UI, desktop shell, distribution, module loader, licensing and entitlement client boundaries. |
-| `omnivia-dev-pack` | Private | Optional downloadable Dev module with MCP, CLI, repo indexing, code graph, and agent context pack features. |
+| `omnivia-dev` | Private | Optional downloadable Dev module with MCP, CLI, repo indexing, code graph, and agent context pack features. |
 | `omnivia-cloud` | Private | Future cloud implementation placeholder. |
 | `omnivia-pm` | Private | Planning, ADRs, roadmap, task backlog, strategy, prompts, reviews, and repository governance. |
 

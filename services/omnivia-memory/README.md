@@ -6,7 +6,7 @@ relationships, and basic search.
 
 It intentionally does not include OmniVia Dev Pack interfaces such as MCP, Dev
 CLI workflows, repo indexing, code graph features, or agent context packs. Those
-belong in the private `omnivia-dev-pack` repository.
+belong in the private `omnivia-dev` repository.
 
 It also does not include the desktop runtime, app shell, local HTTP runtime
 adapter, UI bridge, entitlement client, or distribution logic. Those belong in
