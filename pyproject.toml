@@ -1,9 +1,9 @@
 [project]
-name = "omnivia"
+name = "omnivia-core"
 version = "0.1.0"
-description = "Local-first AI knowledge graph for teams that have outgrown Obsidian and need structured, AI-ready business knowledge management."
+description = "Public OmniVia core primitives for local-first knowledge modeling, persistence, graph links, ingestion, provenance, workspace modeling, and basic search."
 readme = "README.md"
 requires-python = ">=3.11"
 
 [tool.pytest.ini_options]
-testpaths = ["services", "packages"]
+testpaths = ["services"]

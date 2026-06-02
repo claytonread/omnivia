@@ -52,5 +52,13 @@ public core. `omnivia-core` must not depend on private repositories.
 
 ## Status
 
-This repository is being reduced to public core only. App/runtime and Dev-specific
-code have been moved or assigned to private repositories.
+This repository now contains the public OmniVia core tree. App/runtime and
+Dev-specific code live in the related private repositories listed above.
+
+## Checks
+
+Run the core Python test suite with the package source path available:
+
+```bash
+PYTHONPATH=services/omnivia-memory/src python3 -m pytest services/omnivia-memory/tests
+```
