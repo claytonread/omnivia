@@ -22,6 +22,27 @@ the private `omnivia-platform` repository.
 - basic graph/search services
 - focused public core tests
 
+## Development Install
+
+From the `omnivia-core` repository root:
+
+```bash
+python3 -m pip install -e services/omnivia-memory[dev]
+```
+
+## Public Import Example
+
+```python
+from omnivia_memory import CreatedBy, MemoryCreate, Source, SourceType
+
+source = Source(type=SourceType.FILE, reference="notes.md")
+memory = MemoryCreate(
+    content="A public core memory primitive.",
+    source=source,
+    created_by=CreatedBy.HUMAN,
+).to_memory()
+```
+
 ## Repository Boundary
 
 Keep this package public-safe. Do not add:

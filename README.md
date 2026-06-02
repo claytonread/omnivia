@@ -57,8 +57,29 @@ Dev-specific code live in the related private repositories listed above.
 
 ## Checks
 
+Install the public core memory package locally for development:
+
+```bash
+python3 -m pip install -e services/omnivia-memory[dev]
+```
+
 Run the core Python test suite with the package source path available:
 
 ```bash
 PYTHONPATH=services/omnivia-memory/src python3 -m pytest services/omnivia-memory/tests
+```
+
+## Public Import Example
+
+```python
+from omnivia_memory import CreatedBy, MemoryCreate, MemoryService, Source, SourceType
+
+source = Source(type=SourceType.HUMAN, reference="direct")
+memory = MemoryCreate(
+    content="A source-backed local knowledge item.",
+    source=source,
+    created_by=CreatedBy.HUMAN,
+)
+service = MemoryService()
+created = service.create(memory)
 ```
