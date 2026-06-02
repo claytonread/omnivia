@@ -17,7 +17,7 @@ This package provides a comprehensive benchmarking framework for measuring and t
 ### List Available Scenarios
 
 ```bash
-python -m benchmarks.runner.benchmark_runner --list
+scripts/run-core-benchmarks.sh --list
 ```
 
 ### Run Benchmarks
@@ -25,20 +25,24 @@ python -m benchmarks.runner.benchmark_runner --list
 Run all scenarios with the tiny profile (100 items):
 
 ```bash
-python -m benchmarks.runner.benchmark_runner
+scripts/run-core-benchmarks.sh
 ```
 
 Run with a specific profile:
 
 ```bash
-python -m benchmarks.runner.benchmark_runner --profile small
+scripts/run-core-benchmarks.sh --profile small
 ```
 
 Run specific scenarios:
 
 ```bash
-python -m benchmarks.runner.benchmark_runner --scenario create_memory --scenario retrieve_memory
+scripts/run-core-benchmarks.sh --scenario create_memory --scenario retrieve_memory
 ```
+
+The helper prepends `services/omnivia-memory/src` to `PYTHONPATH` before
+executing the Python runner. This avoids accidentally importing `omnivia_memory`
+from an editable install or a stale worktree.
 
 ### Export Results
 
@@ -46,16 +50,16 @@ Export to different formats:
 
 ```bash
 # JSON (default)
-python -m benchmarks.runner.benchmark_runner
+scripts/run-core-benchmarks.sh
 
 # Markdown
-python -m benchmarks.runner.benchmark_runner --format markdown
+scripts/run-core-benchmarks.sh --format markdown
 
 # CSV
-python -m benchmarks.runner.benchmark_runner --format csv
+scripts/run-core-benchmarks.sh --format csv
 
 # All formats
-python -m benchmarks.runner.benchmark_runner --format all
+scripts/run-core-benchmarks.sh --format all
 ```
 
 ### Compare Against Baseline

@@ -21,7 +21,7 @@ Example: `baseline_tiny_20240101_120000.json`
 
 ```bash
 # Run benchmarks
-python -m benchmarks.runner.benchmark_runner --profile tiny
+scripts/run-core-benchmarks.sh --profile tiny
 
 # Use the generated file as a baseline
 python -m benchmarks.runner.benchmark_compare \
@@ -53,7 +53,7 @@ When performance legitimately improves, update the baseline:
 
 ```bash
 # Run new benchmarks
-python -m benchmarks.runner.benchmark_runner --profile tiny
+scripts/run-core-benchmarks.sh --profile tiny
 
 # Set new baseline
 python -m benchmarks.runner.benchmark_compare \
@@ -84,6 +84,9 @@ Keep at least one baseline per profile you regularly test.
 In continuous integration, compare against stored baselines:
 
 ```bash
+# Run benchmarks with the local Core source pinned on PYTHONPATH
+scripts/run-core-benchmarks.sh --profile tiny
+
 # Compare against baseline
 python -m benchmarks.runner.benchmark_compare --profile tiny
 
