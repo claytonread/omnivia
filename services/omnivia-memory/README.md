@@ -4,7 +4,7 @@ This package contains public OmniVia Core primitives for local-first knowledge
 memory, persistence, provenance, workspace modeling, ingestion, graph
 relationships, and basic search.
 
-It intentionally does not include OmniVia Dev Pack interfaces such as MCP, Dev
+It intentionally does not include OmniVia Dev Module interfaces such as MCP, Dev
 CLI workflows, repo indexing, code graph features, or agent context packs. Those
 belong in the private `omnivia-dev` repository.
 

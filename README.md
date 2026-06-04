@@ -4,7 +4,7 @@ OmniVia Core is the public foundation for OmniVia's local-first knowledge model.
 
 It contains public source-library primitives for representing, storing, linking,
 importing, exporting, and searching local knowledge. It is intentionally not the
-OmniVia desktop app, commercial platform, Dev Pack, or cloud product.
+OmniVia desktop app, commercial platform, Dev Module, or cloud product.
 
 ## Scope
 
