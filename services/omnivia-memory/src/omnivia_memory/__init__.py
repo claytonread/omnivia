@@ -45,6 +45,26 @@ from omnivia_memory.ingestion import (
     ParseStatus,
     ScanOptions,
 )
+from omnivia_memory.app_manifest import (
+    AppManifest,
+    AppManifestValidationError,
+    AppState,
+    DataSource,
+    ProvenanceRequirement,
+    ValidationResult as AppValidationResult,
+    validate_app_manifest,
+)
+from omnivia_memory.component_contract import (
+    ComponentContract,
+    ComponentContractValidationError,
+    ComponentFamily,
+    ComponentInput,
+    ComponentOutput,
+    ComponentPermission,
+    ProvenanceBehavior,
+    ValidationResult as ComponentValidationResult,
+    validate_component_contract,
+)
 from omnivia_memory.module_manifest import (
     Entrypoint,
     Integrity,
@@ -83,6 +103,10 @@ from omnivia_memory.workspace import (
 __version__ = "0.1.0"
 
 __all__ = [
+    "AppManifest",
+    "AppManifestValidationError",
+    "AppState",
+    "AppValidationResult",
     "ApprovalStatus",
     "BaseChunker",
     "BaseExtractor",
@@ -90,7 +114,15 @@ __all__ = [
     "Chunk",
     "ChunkConfig",
     "ChunkRepository",
+    "ComponentContract",
+    "ComponentContractValidationError",
+    "ComponentFamily",
+    "ComponentInput",
+    "ComponentOutput",
+    "ComponentPermission",
+    "ComponentValidationResult",
     "CreatedBy",
+    "DataSource",
     "DOCXExtractor",
     "Database",
     "DatabaseConfig",
@@ -133,6 +165,8 @@ __all__ = [
     "ParagraphChunker",
     "ParseStatus",
     "Permission",
+    "ProvenanceBehavior",
+    "ProvenanceRequirement",
     "Relationship",
     "RelationshipNotFoundError",
     "RelationshipRepository",
@@ -142,6 +176,8 @@ __all__ = [
     "Source",
     "SourceType",
     "TextExtractor",
+    "validate_app_manifest",
+    "validate_component_contract",
     "validate_module_manifest",
     "Workspace",
     "WorkspaceCreate",
