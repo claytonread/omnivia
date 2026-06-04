@@ -45,6 +45,15 @@ from omnivia_memory.ingestion import (
     ParseStatus,
     ScanOptions,
 )
+from omnivia_memory.module_manifest import (
+    Entrypoint,
+    Integrity,
+    ModuleKind,
+    ModuleManifest,
+    ModuleManifestValidationError,
+    Permission,
+    validate_module_manifest,
+)
 from omnivia_memory.ingestion.extractors import TextExtractor
 from omnivia_memory.lifecycle import CreatedBy, LifecycleRules, LifecycleState
 from omnivia_memory.memory import (
@@ -90,6 +99,7 @@ __all__ = [
     "EntityRepository",
     "EntityType",
     "EntityValidationError",
+    "Entrypoint",
     "ExtractionResult",
     "FileInfo",
     "FileScanner",
@@ -104,6 +114,7 @@ __all__ = [
     "ImportSummary",
     "IngestResult",
     "IngestionPipeline",
+    "Integrity",
     "InvalidTransitionError",
     "LifecycleRules",
     "LifecycleState",
@@ -115,9 +126,13 @@ __all__ = [
     "MemoryService",
     "MemoryServiceError",
     "MemoryUpdate",
+    "ModuleKind",
+    "ModuleManifest",
+    "ModuleManifestValidationError",
     "PDFExtractor",
     "ParagraphChunker",
     "ParseStatus",
+    "Permission",
     "Relationship",
     "RelationshipNotFoundError",
     "RelationshipRepository",
@@ -127,6 +142,7 @@ __all__ = [
     "Source",
     "SourceType",
     "TextExtractor",
+    "validate_module_manifest",
     "Workspace",
     "WorkspaceCreate",
     "WorkspaceIndexStatus",

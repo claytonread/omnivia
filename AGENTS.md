@@ -1,60 +1,102 @@
 # AGENTS.md
 
-## Purpose
+## Repo
 
-This repository is `omnivia-core`, the public OmniVia core repository.
+`omnivia-core`
 
-It should contain only public, source-library core primitives for OmniVia:
+## Role
 
-- domain models
-- file-format primitives
-- graph and storage primitives
-- local knowledge primitives
-- backlink/link primitives
-- import/export primitives
-- basic search primitives
-- public tests for core primitives
-- public documentation that is safe for community use
+Public core, graph, memory, contracts, schemas and public docs.
 
-## Repository Boundary
+## Foundational principle
 
-Do not add the following to this repository:
+Prefer the simplest viable approach.
 
-- desktop app code
-- runtime adapter code
-- UI/interface code
-- Electron or Tauri code
-- app shell, preload, main, or renderer bridge code
-- licensing, entitlement, or billing implementation
-- MCP server implementation
-- Dev CLI implementation
-- repo indexing, code graph, or agent context pack features
-- cloud services or cloud client code
-- private strategy, roadmap, planning, prompts, or operating files
-- Claude/Codex private workflow files
-- secrets, credentials, local databases, generated builds, caches, or dependency folders
+Choose fewer concepts, fewer moving parts, clearer ownership and easier verification unless complexity is clearly justified.
 
-## Related Private Repositories
+## Operating model
 
-- `omnivia-platform`: private base app and commercial platform.
-- `omnivia-dev`: private optional downloadable Dev module.
-- `omnivia-cloud`: private future cloud placeholder.
-- `omnivia-pm`: private planning, operating, ADR, roadmap, task, prompt, and governance repository.
+Codex is the PM, orchestrator, reviewer and integration controller.
 
-## Dependency Direction
+Claude is the implementation agent.
 
-`omnivia-core` must not depend on private repositories.
+For coding tasks:
 
-Private repositories may consume or extend `omnivia-core`, but this repository must remain usable as the public foundation.
+**Claude builds. Codex manages.**
 
-## Contribution Rules
+## Naming rule
 
-Keep changes small, public-safe, and focused on reusable core primitives.
+Use short names by default:
 
-Before committing:
+- Apps
+- Dev
+- Pro
+- Core
+- Platform
+- Cloud
 
-1. Check `git status`.
-2. Review the diff.
-3. Confirm no private planning or operating material is included.
-4. Confirm no secrets, local databases, generated files, or dependency folders are included.
-5. Run relevant package-specific checks where available.
+Use **Module** for installable product sets such as Apps, Dev and Pro.
+
+Use **Component** for reusable parts inside Apps.
+
+Do not use deprecated terms unless quoting old docs.
+
+## This repo owns
+
+- graph primitives
+- memory/context primitives
+- public contracts
+- manifest schemas
+- provenance primitives
+
+## This repo does not own
+
+- desktop shell
+- licensing
+- Harness implementation
+- paid Modules
+
+## Shared OmniVia vocabulary
+
+- Module: installable product set such as Apps, Dev or Pro.
+- Apps: Module for creating and running custom business Apps.
+- Dev: Module for developer tools.
+- Pro: Module for premium local features.
+- App: custom hosted business application.
+- Component: reusable part inside an App.
+- Harness: controlled runtime boundary.
+- Module Manifest: definition file for an installable Module.
+
+## Deprecated terms
+
+Avoid unless quoting old docs:
+
+- Extension
+- Capability
+- Pack
+- Add-on
+- Layer
+- Space
+- Surface
+- Graph App
+- Brick
+- Block
+- Studio
+
+## Repo boundary rules
+
+- Do not make changes outside this repo unless Codex explicitly created a cross-repo integration task.
+- Do not add paid Module implementation code to the base platform.
+- Do not bypass Harness APIs.
+- Do not access connector credentials directly.
+- If the task requires another repo, stop and report the required cross-repo change.
+
+## Required PM context
+
+Read the operating model in:
+
+`/Users/claytonread/Projects/omnivia-pm/docs/operating-model/codex-claude-multirepo-workflow.md`
+
+Use the Claude implementation task template in:
+
+`/Users/claytonread/Projects/omnivia-pm/prompts/claude-implementation-task-template.md`
