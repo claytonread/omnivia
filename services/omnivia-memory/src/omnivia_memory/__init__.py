@@ -45,6 +45,16 @@ from omnivia_memory.ingestion import (
     ParseStatus,
     ScanOptions,
 )
+from omnivia_memory.app_shell_bridge import (
+    AppShellBodyDescriptor,
+    AppShellBridgeValidationError,
+    AppShellHostContext,
+    AppShellRuntimeState,
+    AppShellSource,
+    ValidationResult as AppShellBridgeValidationResult,
+    validate_app_shell_body_descriptor,
+    validate_app_shell_host_context,
+)
 from omnivia_memory.app_manifest import (
     AppManifest,
     AppManifestValidationError,
@@ -85,6 +95,13 @@ from omnivia_memory.memory import (
     MemoryServiceError,
     MemoryUpdate,
 )
+from omnivia_memory.memory_graph import (
+    EvidenceGraphResponse,
+    GraphPreviewResponse,
+    MemoryGraphFixture,
+    RetrievalTrace,
+    build_memory_graph_fixture,
+)
 from omnivia_memory.persistence import Database, get_database
 from omnivia_memory.persistence.database import DatabaseConfig
 from omnivia_memory.persistence.repositories import MemoryRepository
@@ -106,6 +123,12 @@ __all__ = [
     "AppManifest",
     "AppManifestValidationError",
     "AppState",
+    "AppShellBodyDescriptor",
+    "AppShellBridgeValidationError",
+    "AppShellBridgeValidationResult",
+    "AppShellHostContext",
+    "AppShellRuntimeState",
+    "AppShellSource",
     "AppValidationResult",
     "ApprovalStatus",
     "BaseChunker",
@@ -133,6 +156,7 @@ __all__ = [
     "EntityValidationError",
     "Entrypoint",
     "ExtractionResult",
+    "EvidenceGraphResponse",
     "FileInfo",
     "FileScanner",
     "FileType",
@@ -143,6 +167,7 @@ __all__ = [
     "GraphSearchResult",
     "GraphSearchResultSet",
     "GraphSearchService",
+    "GraphPreviewResponse",
     "ImportSummary",
     "IngestResult",
     "IngestionPipeline",
@@ -153,6 +178,7 @@ __all__ = [
     "MarkdownExtractor",
     "Memory",
     "MemoryCreate",
+    "MemoryGraphFixture",
     "MemoryNotFoundError",
     "MemoryRepository",
     "MemoryService",
@@ -171,12 +197,15 @@ __all__ = [
     "RelationshipNotFoundError",
     "RelationshipRepository",
     "RelationshipType",
+    "RetrievalTrace",
     "ScanOptions",
     "SearchService",
     "Source",
     "SourceType",
     "TextExtractor",
     "validate_app_manifest",
+    "validate_app_shell_body_descriptor",
+    "validate_app_shell_host_context",
     "validate_component_contract",
     "validate_module_manifest",
     "Workspace",
@@ -186,5 +215,6 @@ __all__ = [
     "WorkspaceService",
     "WorkspaceUpdate",
     "__version__",
+    "build_memory_graph_fixture",
     "get_database",
 ]
